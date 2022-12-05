@@ -127,6 +127,7 @@ local load_core = function()
 	require("core.mapping")
 	require("keymap")
 	require("core.event")
+
 	pack.load_compile()
 
 	-- vim.api.nvim_command([[set background=light]])
