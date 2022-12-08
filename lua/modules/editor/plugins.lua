@@ -1,7 +1,10 @@
 local editor = {}
 local conf = require("modules.editor.config")
 
-editor["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
+editor["junegunn/vim-easy-align"] = {
+	opt = true,
+	cmd = "EasyAlign",
+}
 editor["RRethy/vim-illuminate"] = {
 	opt = true,
 	event = "BufReadPost",
@@ -42,8 +45,15 @@ editor["andymass/vim-matchup"] = {
 	opt = true,
 	after = "nvim-treesitter",
 }
-editor["rainbowhxch/accelerated-jk.nvim"] = { opt = true, event = "BufWinEnter", config = conf.accelerated_jk }
-editor["hrsh7th/vim-eft"] = { opt = true, event = "BufReadPost" }
+editor["rainbowhxch/accelerated-jk.nvim"] = {
+	opt = true,
+	event = "BufWinEnter",
+	config = conf.accelerated_jk,
+}
+editor["hrsh7th/vim-eft"] = {
+	opt = true,
+	event = "BufReadPost",
+}
 editor["romainl/vim-cool"] = {
 	opt = true,
 	event = { "CursorMoved", "InsertEnter" },
@@ -100,7 +110,10 @@ editor["rcarriga/nvim-dap-ui"] = {
 	after = "nvim-dap", -- Need to call setup after dap has been initialized.
 	config = conf.dapui,
 }
-editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }
+editor["tpope/vim-fugitive"] = {
+	opt = true,
+	cmd = { "Git", "G" },
+}
 editor["famiu/bufdelete.nvim"] = {
 	opt = true,
 	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
