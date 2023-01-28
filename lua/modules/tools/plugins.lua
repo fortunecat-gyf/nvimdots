@@ -1,52 +1,50 @@
 local tools = {}
 local conf = require("modules.tools.config")
 
-tools["nvim-lua/plenary.nvim"] = { opt = false }
 tools["nvim-telescope/telescope.nvim"] = {
-	opt = true,
-	module = "telescope",
+	lazy = true,
 	cmd = "Telescope",
 	config = conf.telescope,
-	requires = {
-		{ "nvim-lua/plenary.nvim", opt = false },
-		{ "nvim-lua/popup.nvim", opt = true },
+	dependencies = {
+		{ "nvim-tree/nvim-web-devicons" },
+		{ "nvim-lua/plenary.nvim" },
+		{ "nvim-lua/popup.nvim" },
+		{ "debugloop/telescope-undo.nvim" },
+		{ "ahmedkhalf/project.nvim", event = "BufReadPost", config = conf.project },
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{ "nvim-telescope/telescope-frecency.nvim", dependencies = {
+			{ "kkharji/sqlite.lua" },
+		} },
+		{ "jvgrootveld/telescope-zoxide" },
+		{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	},
 }
-tools["nvim-telescope/telescope-fzf-native.nvim"] = {
-	opt = true,
-	run = "make",
-	after = "telescope.nvim",
-}
-tools["nvim-telescope/telescope-project.nvim"] = {
-	opt = true,
-	after = "telescope-fzf-native.nvim",
-}
-tools["nvim-telescope/telescope-frecency.nvim"] = {
-	opt = true,
-	after = "telescope-project.nvim",
-	requires = { { "kkharji/sqlite.lua", opt = true } },
-}
-tools["jvgrootveld/telescope-zoxide"] = { opt = true, after = "telescope-frecency.nvim" }
 tools["michaelb/sniprun"] = {
-	opt = true,
-	run = "bash ./install.sh",
-	cmd = { "SnipRun", "'<,'>SnipRun" },
-}
-tools["folke/which-key.nvim"] = {
-	opt = true,
-	keys = "<leader>",
-	config = conf.which_key,
+	lazy = true,
+	build = "bash ./install.sh",
+	cmd = { "SnipRun" },
 }
 tools["folke/trouble.nvim"] = {
-	opt = true,
+	lazy = true,
 	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
 	config = conf.trouble,
 }
-tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 tools["gelguy/wilder.nvim"] = {
+	lazy = true,
 	event = "CmdlineEnter",
 	config = conf.wilder,
-	requires = { { "romgrk/fzy-lua-native", after = "wilder.nvim" } },
+	dependencies = { { "romgrk/fzy-lua-native" } },
+}
+tools["mrjones2014/legendary.nvim"] = {
+	lazy = true,
+	cmd = "Legendary",
+	config = conf.legendary,
+	dependencies = {
+		{ "kkharji/sqlite.lua" },
+		{ "stevearc/dressing.nvim", event = "VeryLazy", config = conf.dressing },
+		-- Please don't remove which-key.nvim otherwise you need to set timeoutlen=300 at `lua/core/options.lua`
+		{ "folke/which-key.nvim", event = "VeryLazy", config = conf.which_key },
+	},
 }
 
 return tools

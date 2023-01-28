@@ -18,6 +18,8 @@ function config.nvim_treesitter()
 			"yaml",
 			"latex",
 			"make",
+			"markdown",
+			"markdown_inline",
 			"python",
 			"rust",
 			"html",
@@ -29,7 +31,7 @@ function config.nvim_treesitter()
 		highlight = {
 			enable = true,
 			disable = { "vim" },
-			additional_vim_regex_highlighting = false,
+			additional_vim_regex_highlighting = { "c", "cpp" },
 		},
 		textobjects = {
 			select = {
@@ -65,7 +67,7 @@ function config.nvim_treesitter()
 		rainbow = {
 			enable = true,
 			extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-			max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+			max_file_lines = 2000, -- Do not enable for files with more than 2000 lines, int
 		},
 		context_commentstring = { enable = true, enable_autocmd = false },
 		matchup = { enable = true },
@@ -96,7 +98,6 @@ function config.illuminate()
 			"norg",
 			"NvimTree",
 			"Outline",
-			"packer",
 			"toggleterm",
 		},
 		under_cursor = false,
@@ -262,7 +263,6 @@ end
 function config.dap()
 	local icons = { dap = require("modules.ui.icons").get("dap") }
 
-	vim.api.nvim_command([[packadd nvim-dap-ui]])
 	local dap = require("dap")
 	local dapui = require("dapui")
 
@@ -328,7 +328,7 @@ function config.dap()
 	dap.configurations.c = dap.configurations.cpp
 	dap.configurations.rust = dap.configurations.cpp
 
-	dap.adapters.go = function(callback, config)
+	dap.adapters.go = function(callback)
 		local stdout = vim.loop.new_pipe(false)
 		local handle
 		local pid_or_err
@@ -431,26 +431,6 @@ function config.specs()
 	})
 end
 
-function config.tabout()
-	require("tabout").setup({
-		tabkey = "<A-l>",
-		backwards_tabkey = "<A-h>",
-		ignore_beginning = false,
-		act_as_tab = true,
-		enable_backward = true,
-		completion = true,
-		tabouts = {
-			{ open = "'", close = "'" },
-			{ open = '"', close = '"' },
-			{ open = "`", close = "`" },
-			{ open = "(", close = ")" },
-			{ open = "[", close = "]" },
-			{ open = "{", close = "}" },
-		},
-		exclude = {},
-	})
-end
-
 function config.imselect()
 	-- fcitx5 need a manual config
 	if vim.fn.executable("fcitx5-remote") == 1 then
@@ -472,7 +452,7 @@ end
 function config.better_escape()
 	require("better_escape").setup({
 		mapping = { "jk", "jj" }, -- a table with mappings to use
-		timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+		timeout = 500, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
 		clear_empty_lines = false, -- clear line after escaping if there is only whitespace
 		keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
 		-- example(recommended)
@@ -492,6 +472,18 @@ function config.accelerated_jk()
 		-- when 'enable_deceleration = true', 'deceleration_table = { {200, 3}, {300, 7}, {450, 11}, {600, 15}, {750, 21}, {900, 9999} }'
 		deceleration_table = { { 150, 9999 } },
 	})
+end
+
+function config.clever_f()
+	vim.api.nvim_set_hl(
+		0,
+		"CleverChar",
+		{ underline = true, bold = true, fg = "Orange", bg = "NONE", ctermfg = "Red", ctermbg = "NONE" }
+	)
+	vim.g.clever_f_mark_char_color = "CleverChar"
+	vim.g.clever_f_mark_direct_color = "CleverChar"
+	vim.g.clever_f_mark_direct = true
+	vim.g.clever_f_timeout_ms = 1500
 end
 
 function config.smartyank()
@@ -516,6 +508,27 @@ function config.smartyank()
 			silent = false, -- true to disable the "n chars copied" echo
 			echo_hl = "Directory", -- highlight group of the OSC52 echo message
 		},
+	})
+end
+
+function config.tabout()
+	require("tabout").setup({
+		tabkey = "", -- key to trigger tabout, set to an empty string to disable
+		backwards_tabkey = "", -- key to trigger backwards tabout, set to an empty string to disable
+		act_as_tab = true, -- shift content if tab out is not possible
+		act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+		enable_backwards = true,
+		completion = true, -- if the tabkey is used in a completion pum
+		tabouts = {
+			{ open = "'", close = "'" },
+			{ open = '"', close = '"' },
+			{ open = "`", close = "`" },
+			{ open = "(", close = ")" },
+			{ open = "[", close = "]" },
+			{ open = "{", close = "}" },
+		},
+		ignore_beginning = true, -- if the cursor is at the beginning of a filled element it will rather tab out than shift the content
+		exclude = {}, -- tabout will ignore these filetypes
 	})
 end
 
