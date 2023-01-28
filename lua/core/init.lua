@@ -70,7 +70,7 @@ local disable_distribution_plugins = function()
 end
 
 local leader_map = function()
-	vim.g.mapleader = ","
+	vim.g.mapleader = " "
 	vim.api.nvim_set_keymap("n", " ", "", { noremap = true })
 	vim.api.nvim_set_keymap("x", " ", "", { noremap = true })
 end
@@ -114,12 +114,10 @@ local clipboard_config = function()
 end
 
 local load_core = function()
-	local pack = require("core.pack")
 	createdir()
 	disable_distribution_plugins()
 	leader_map()
 
-	pack.ensure_plugins()
 	neovide_config()
 	clipboard_config()
 
@@ -127,11 +125,12 @@ local load_core = function()
 	require("core.mapping")
 	require("keymap")
 	require("core.event")
+	require("core.lazy")
 
-	pack.load_compile()
-
-	-- vim.api.nvim_command([[set background=light]])
-	vim.api.nvim_command([[colorscheme catppuccin]])
+	local colorscheme = require("core.settings").colorscheme
+	local background = require("core.settings").background
+	vim.api.nvim_command("set background=" .. background)
+	vim.api.nvim_command("colorscheme " .. colorscheme)
 end
 
 load_core()
