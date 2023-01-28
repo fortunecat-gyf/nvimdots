@@ -225,7 +225,7 @@ fi
 prompt "Fetching in progress..."
 if [ "$USE_SSH" -eq "1" ]; then
 	if is_latest; then
-		execute "git" "clone" "-b" "main" "git@github.com:ayamir/nvimdots.git" "${DEST_DIR}"
+		execute "git" "clone" "-b" "dev" "git@github.com:fortunecat-gyf/nvimdots.git" "${DEST_DIR}"
 	else
 		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
 		prompt "Automatically redirecting you to legacy version..."
@@ -233,7 +233,7 @@ if [ "$USE_SSH" -eq "1" ]; then
 	fi
 else
 	if is_latest; then
-		execute "git" "clone" "-b" "main" "https://github.com/ayamir/nvimdots.git" "${DEST_DIR}"
+		execute "git" "clone" "-b" "dev" "https://github.com/fortunecat-gyf/nvimdots.git" "${DEST_DIR}"
 	else
 		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
 		prompt "Automatically redirecting you to legacy version..."
@@ -254,9 +254,9 @@ cat <<EOS
 
 Thank you for using this set of configuration!
 - Project Homepage:
-    ${tty_underline}https://github.com/ayamir/nvimdots${tty_reset}
+    ${tty_underline}https://github.com/fortunecat-gyf/nvimdots${tty_reset}
 - Further documentation (including executables you ${tty_bold}must${tty_reset} install for full functionality):
-    ${tty_underline}https://github.com/ayamir/nvimdots/wiki/Prerequisites${tty_reset}
+    ${tty_underline}https://github.com/fortunecat-gyf/nvimdots/wiki/Prerequisites${tty_reset}
 EOS
 
 if [[ -z "${NONINTERACTIVE-}" ]]; then
