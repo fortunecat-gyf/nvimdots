@@ -126,14 +126,22 @@ function config.edge()
 end
 -- shaunsingh/nord.nvim -- Neovim theme based off of the Nord Color Palette. -- Nord配色方案
 function config.nord()
-	vim.g.nord_contrast = true -- Default: false -- Make sidebars and popup menus like nvim-tree and telescope have a different background -- 让侧边栏和弹出式菜单(如nvm -tree和telescope)具有不同的背景
-	vim.g.nord_borders = false -- Default: false -- Enable the border between verticaly split windows visable -- 启用垂直分割窗口之间的边界可见
-	vim.g.nord_disable_background = false -- Default: false -- Set the cursorline transparent/visible -- 设置光标线透明/可见
-	vim.g.nord_cursorline_transparent = true -- Default: false -- Disable the setting of background color so that NeoVim can use your terminal background -- 禁用背景色设置，以便NeoVim可以使用终端背景
-	vim.g.nord_enable_sidebar_background = true -- Default: false -- Re-enables the background of the sidebar if you disabled the background of everything  -- 如果禁用了所有背景，则重新启用侧边栏的背景
-	vim.g.nord_italic = true -- Default: true -- enables/disables italics -- 启用/禁用斜体
-	vim.g.nord_uniform_diff_background = false -- Default: false -- enables/disables colorful backgrounds when used in diff mode -- 在diff模式下启用/禁用彩色背景
-	vim.g.nord_bold = true -- Default: true -- enables/disables bold -- 启用/禁用粗体
+	-- Default: false -- Make sidebars and popup menus like nvim-tree and telescope have a different background -- 让侧边栏和弹出式菜单(如nvm -tree和telescope)具有不同的背景
+	vim.g.nord_contrast = true
+	-- Default: false -- Enable the border between verticaly split windows visable -- 启用垂直分割窗口之间的边界可见
+	vim.g.nord_borders = false
+	-- Default: false -- Set the cursorline transparent/visible -- 设置光标线透明/可见
+	vim.g.nord_disable_background = false
+	-- Default: false -- Disable the setting of background color so that NeoVim can use your terminal background -- 禁用背景色设置，以便NeoVim可以使用终端背景
+	vim.g.nord_cursorline_transparent = true
+	-- Default: false -- Re-enables the background of the sidebar if you disabled the background of everything  -- 如果禁用了所有背景，则重新启用侧边栏的背景
+	vim.g.nord_enable_sidebar_background = true
+	-- Default: true -- enables/disables italics -- 启用/禁用斜体
+	vim.g.nord_italic = true
+	-- Default: false -- enables/disables colorful backgrounds when used in diff mode -- 在diff模式下启用/禁用彩色背景
+	vim.g.nord_uniform_diff_background = false
+	-- Default: true -- enables/disables bold -- 启用/禁用粗体
+	vim.g.nord_bold = true
 end
 
 function config.catppuccin()
