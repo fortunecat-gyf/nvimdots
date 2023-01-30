@@ -38,7 +38,6 @@ local plug_map = {
 	["n|<leader>pr"] = map_cr("Lazy restore"):with_silent():with_noremap():with_nowait(),
 	["n|<leader>px"] = map_cr("Lazy clean"):with_silent():with_noremap():with_nowait(),
 	-- Lsp mapp work when insertenter and lsp start
-	["n|<leader>la"] = map_cr("lua vim.lsp.buf.code_action()"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>ld"] = map_cr("Telescope diagnostics bufnr=0 theme=get_ivy"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>lw"] = map_cr("Telescope diagnostics"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>lf"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
@@ -47,7 +46,6 @@ local plug_map = {
 	["n|<leader>lj"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>lk"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>ll"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
-	["n|<leader>lq"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>lr"] = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>ls"] = map_cr("Telescope lsp_document_symbols"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>lS"] = map_cr("Telescope lsp_dynamic_workspace_symbols"):with_noremap():with_silent():with_nowait(),
