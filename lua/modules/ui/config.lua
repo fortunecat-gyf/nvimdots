@@ -115,13 +115,19 @@ function config.alpha()
 		end,
 	})
 end
-
+-- sainnhe/edge -- 𝐄𝐝𝐠𝐞 theme -- 𝐄𝐝𝐠𝐞配色方案
 function config.edge()
+	-- Default: 'default' Available: 'default', 'aura', 'neon' -- Customize the style of this color scheme -- 自定义此配色方案的样式
 	vim.g.edge_style = "aura"
+	-- Default: 0  Available: 0,1 -- Set to 1 to italicize keywords. -- 设置为1时，关键字为斜体
 	vim.g.edge_enable_italic = 1
+	-- Default: 0  Available: 0,1 -- Set to 1 to disable italic in Comment -- 设置为1，禁用注释中的斜体
 	vim.g.edge_disable_italic_comment = 1
+	-- Default:'default' Available:
 	vim.g.edge_show_eob = 1
+	-- Default:'default' Available:
 	vim.g.edge_better_performance = 1
+	-- Default:'default' Available:  -- Set to 1 to enable transparent background -- 设置为“1”表示启用透明背景
 	vim.g.edge_transparent_background = 1
 end
 -- shaunsingh/nord.nvim -- Neovim theme based off of the Nord Color Palette. -- Nord配色方案

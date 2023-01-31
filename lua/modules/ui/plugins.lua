@@ -1,10 +1,12 @@
 local ui = {}
 local conf = require("modules.ui.config")
 
+-- Nord配色方案
 ui["shaunsingh/nord.nvim"] = {
 	lazy = true,
 	config = conf.nord,
 }
+-- 𝐄𝐝𝐠𝐞配色方案
 ui["sainnhe/edge"] = {
 	lazy = true,
 	config = conf.edge,
