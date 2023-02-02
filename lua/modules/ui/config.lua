@@ -64,7 +64,7 @@ function config.alpha()
 		button("space f c", " Scheme change", leader, "<cmd>Telescope colorscheme<cr>"),
 		button("space f r", " File frecency", leader, "<cmd>Telescope frecency<cr>"),
 		button("space f e", " File history", leader, "<cmd>Telescope oldfiles<cr>"),
-		button("space f p", " Project find", leader, "<cmd>Telescope project<cr>"),
+		button("space f p", " Project find", leader, "<cmd>Telescope projects<cr>"),
 		button("space f f", " File find", leader, "<cmd>Telescope find_files<cr>"),
 		button("space f n", " File new", leader, "<cmd>enew<cr>"),
 		button("space f w", " Word find", leader, "<cmd>Telescope live_grep<cr>"),
@@ -440,6 +440,7 @@ function config.notify()
 end
 -- nvim-lualine/lualine.nvim -- A blazing fast and easy to configure Neovim statusline written in Lua. -- 一个用Lua编写的快速且易于配置的Neovim statusline。
 function config.lualine()
+	local colors = require("modules.utils").get_palette()
 	local icons = {
 		diagnostics = require("modules.ui.icons").get("diagnostics", true),
 		misc = require("modules.ui.icons").get("misc", true),
@@ -600,7 +601,7 @@ function config.lualine()
 	})
 
 	-- Properly set background color for lspsaga
-	local winbar_bg = require("modules.utils").hl_to_rgb("StatusLine", true, "#000000")
+	local winbar_bg = require("modules.utils").hl_to_rgb("StatusLine", true, colors.mantle)
 	for _, hlGroup in pairs(require("lspsaga.lspkind").get_kind()) do
 		require("modules.utils").extend_hl("LspSagaWinbar" .. hlGroup[1], { bg = winbar_bg })
 	end

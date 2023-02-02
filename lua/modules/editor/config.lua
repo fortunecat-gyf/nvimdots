@@ -181,6 +181,9 @@ end
 -- ？ 多tab 编辑
 -- akinsho/toggleterm.nvim -- A neovim plugin to persist and toggle multiple terminals during an editing session -- 一个neovim插件，用于在编辑会话期间持久化和切换多个终端
 function config.toggleterm()
+	local colors = require("modules.utils").get_palette()
+	local floatborder_hl = require("modules.utils").hl_to_rgb("FloatBorder", false, colors.blue)
+
 	require("toggleterm").setup({
 		-- size can be a number or function which is passed the current terminal
 		size = function(term)
@@ -190,6 +193,11 @@ function config.toggleterm()
 				return vim.o.columns * 0.40
 			end
 		end,
+		highlights = {
+			FloatBorder = {
+				guifg = floatborder_hl,
+			},
+		},
 		on_open = function()
 			-- Prevent infinite calls from freezing neovim.
 			-- Only set these options specific to this terminal buffer.
@@ -270,6 +278,7 @@ end
 -- mfussenegger/nvim-dap -- DAP (Debug Adapter Protocol) -- DAP(调试适配器协议)
 function config.dap()
 	local icons = { dap = require("modules.ui.icons").get("dap") }
+	local colors = require("modules.utils").get_palette()
 
 	local dap = require("dap")
 	local dapui = require("dapui")
@@ -285,7 +294,7 @@ function config.dap()
 	end
 
 	-- We need to override nvim-dap's default highlight groups, AFTER requiring nvim-dap for catppuccin.
-	vim.api.nvim_set_hl(0, "DapStopped", { fg = "#ABE9B3" })
+	vim.api.nvim_set_hl(0, "DapStopped", { fg = colors.green })
 
 	vim.fn.sign_define(
 		"DapBreakpoint",
@@ -312,12 +321,15 @@ function config.dap()
 			name = "Launch",
 			type = "lldb",
 			request = "launch",
+			args = function()
+				local input = vim.fn.input("Input args: ")
+				return vim.fn.split(input, " ", true)
+			end,
 			program = function()
 				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 			end,
 			cwd = "${workspaceFolder}",
 			stopOnEntry = false,
-			args = {},
 
 			-- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
 			--
