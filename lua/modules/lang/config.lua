@@ -1,5 +1,5 @@
 local config = {}
-
+-- simrat39/rust-tools.nvim -- A plugin to improve your rust experience in neovim. -- 一个改善neovim中rust体验的插件。
 function config.rust_tools()
 	local opts = {
 		tools = { -- rust-tools options
@@ -184,7 +184,7 @@ function config.rust_tools()
 
 	require("rust-tools").setup(opts)
 end
-
+-- fatih/vim-go -- golang -- go语言
 function config.lang_go()
 	vim.g.go_doc_keywordprg_enabled = 0
 	vim.g.go_def_mapping_enabled = 0

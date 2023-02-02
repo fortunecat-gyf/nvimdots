@@ -1,7 +1,7 @@
 local config = {}
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 local use_ssh = require("core.settings").use_ssh
-
+-- nvim-treesitter/nvim-treesitter -- The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter in Neovim and to provide some basic functionality such as highlighting based on it: -- nvm -treesitter的目标是提供一种简单易用的方式来使用Neovim中的tree-sitter接口，并提供一些基本功能，例如基于它的高亮显示
 function config.nvim_treesitter()
 	vim.api.nvim_set_option_value("foldmethod", "expr", {})
 	vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
@@ -87,7 +87,7 @@ function config.nvim_treesitter()
 		end
 	end
 end
-
+-- RRethy/vim-illuminate -- Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching. -- Vim插件，使用LSP, Tree-sitter或regex匹配自动高亮光标下的单词的其他用途。
 function config.illuminate()
 	require("illuminate").configure({
 		providers = {
@@ -110,7 +110,7 @@ function config.illuminate()
 		under_cursor = false,
 	})
 end
-
+-- terrortylor/nvim-comment -- Toggle comments in Neovim, using built in commentstring filetype option; -- 在Neovim中切换注释，使用内置的commentstring文件类型选项;用Lua编写
 function config.nvim_comment()
 	require("nvim_comment").setup({
 		hook = function()
@@ -118,7 +118,7 @@ function config.nvim_comment()
 		end,
 	})
 end
-
+-- phaazon/hop.nvim -- -- Hop是一个类似于easymotion的插件，可以让你用尽可能少的按键来跳转文档中的任何地方。
 function config.hop()
 	require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 end
@@ -139,7 +139,7 @@ end
 function config.nvim_colorizer()
 	require("colorizer").setup()
 end
-
+-- karb94/neoscroll.nvim -- Neoscroll: a smooth scrolling neovim plugin written in lua -- Neoscroll:用lua编写的一个平滑滚动的neovim插件
 function config.neoscroll()
 	require("neoscroll").setup({
 		-- All these keys will be mapped to their corresponding default scrolling animation
@@ -164,7 +164,7 @@ function config.neoscroll()
 		post_hook = nil, -- Function to run after the scrolling animation ends
 	})
 end
-
+-- rmagatti/auto-session -- Auto Session takes advantage of Neovim's existing session management capabilities to provide seamless automatic session management. -- 自动会话利用Neovim现有的会话管理功能，提供无缝的自动会话管理。
 function config.auto_session()
 	local opts = {
 		log_level = "info",
@@ -178,7 +178,8 @@ function config.auto_session()
 
 	require("auto-session").setup(opts)
 end
-
+-- ？ 多tab 编辑
+-- akinsho/toggleterm.nvim -- A neovim plugin to persist and toggle multiple terminals during an editing session -- 一个neovim插件，用于在编辑会话期间持久化和切换多个终端
 function config.toggleterm()
 	require("toggleterm").setup({
 		-- size can be a number or function which is passed the current terminal
@@ -266,7 +267,7 @@ function config.dapui()
 		windows = { indent = 1 },
 	})
 end
-
+-- mfussenegger/nvim-dap -- DAP (Debug Adapter Protocol) -- DAP(调试适配器协议)
 function config.dap()
 	local icons = { dap = require("modules.ui.icons").get("dap") }
 
@@ -419,7 +420,7 @@ function config.dap()
 		},
 	}
 end
-
+-- edluffy/specs.nvim -- Show where your cursor moves when jumping large distances (e.g between windows).  Fast and lightweight, written completely in Lua. -- 显示你的光标移动的地方，跳跃的距离较大(例如在窗口之间)。快速且轻量级，完全用Lua编写。
 function config.specs()
 	require("specs").setup({
 		show_jumps = true,
@@ -455,7 +456,7 @@ function config.imselect()
 		}, { true, true, true })
 	end
 end
-
+-- max397574/better-escape.nvim -- This plugin is the lua version of better_escape.vim, with some additional features and optimizations -- 专门针对跳出 insert mode 这种场景 jj jk
 function config.better_escape()
 	require("better_escape").setup({
 		mapping = { "jk", "jj" }, -- a table with mappings to use
@@ -468,7 +469,7 @@ function config.better_escape()
 		-- end,
 	})
 end
-
+-- rainbowhxch/accelerated-jk.nvim -- -- 加速上下移动的vim插件
 function config.accelerated_jk()
 	require("accelerated-jk").setup({
 		mode = "time_driven",
@@ -480,7 +481,7 @@ function config.accelerated_jk()
 		deceleration_table = { { 150, 9999 } },
 	})
 end
-
+-- rhysd/clever-f.vim -- -- clever-f。vim扩展了f、f、t和t映射，以方便使用。
 function config.clever_f()
 	vim.api.nvim_set_hl(
 		0,
@@ -492,7 +493,7 @@ function config.clever_f()
 	vim.g.clever_f_mark_direct = true
 	vim.g.clever_f_timeout_ms = 1500
 end
-
+-- ibhagwan/smartyank.nvim -- -- 当我开始使用vim/neovim时，我发现整个复制pasta的过程有点违背直觉，因为系统中只有一个剪贴板，由<Cmd-c>|<Cmd-v>管理。
 function config.smartyank()
 	require("smartyank").setup({
 		highlight = {
@@ -538,7 +539,7 @@ function config.tabout()
 		exclude = {}, -- tabout will ignore these filetypes
 	})
 end
-
+-- LunarVim/bigfile.nvim -- This plugin disables certain features if the opened file is big.  File size and features to disable are configurable. -- 如果打开的文件很大，这个插件会禁用某些功能。文件大小和功能禁用是可配置的。
 function config.bigfile()
 	local ftdetect = {
 		name = "ftdetect",

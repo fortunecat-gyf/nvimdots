@@ -1,5 +1,5 @@
 local config = {}
-
+-- goolord/alpha-nvim -- alpha is a fast and fully programmable greeter for neovim. -- Alpha是一个快速和完全可编程的neovim迎宾器。
 function config.alpha()
 	local alpha = require("alpha")
 	local dashboard = require("alpha.themes.dashboard")
@@ -135,7 +135,7 @@ function config.nord()
 	vim.g.nord_uniform_diff_background = false -- 在diff模式下启用/禁用彩色背景
 	vim.g.nord_bold = true -- 启用/禁用粗体
 end
-
+-- catppuccin/nvim -- catppuccin theme -- catppuccin 配色方案
 function config.catppuccin()
 	local transparent_background = false -- Set background transparency here!
 
@@ -381,7 +381,7 @@ function config.catppuccin()
 		},
 	})
 end
-
+-- zbirenbaum/neodim -- Neovim plugin for dimming the highlights of unused functions, variables, parameters, and more -- Neovim插件，用于调暗未使用的函数，变量，参数等的亮点
 function config.neodim()
 	local blend_color = require("modules.utils").hl_to_rgb("Normal", true)
 
@@ -399,7 +399,7 @@ function config.neodim()
 		},
 	})
 end
-
+-- rcarriga/nvim-notify -- A fancy, configurable, notification manager for NeoVim -- 一个花哨的，可配置的，NeoVim通知管理器
 function config.notify()
 	local notify = require("notify")
 	local icons = {
@@ -438,7 +438,7 @@ function config.notify()
 
 	vim.notify = notify
 end
-
+-- nvim-lualine/lualine.nvim -- A blazing fast and easy to configure Neovim statusline written in Lua. -- 一个用Lua编写的快速且易于配置的Neovim statusline。
 function config.lualine()
 	local icons = {
 		diagnostics = require("modules.ui.icons").get("diagnostics", true),
@@ -606,7 +606,7 @@ function config.lualine()
 	end
 	require("modules.utils").extend_hl("LspSagaWinbarSep", { bg = winbar_bg })
 end
-
+-- nvim-tree/nvim-tree.lua -- A File Explorer For Neovim Written In Lua -- 一个用Lua编写的Neovim文件管理器
 function config.nvim_tree()
 	local icons = {
 		diagnostics = require("modules.ui.icons").get("diagnostics"),
@@ -790,7 +790,7 @@ function config.nvim_tree()
 		},
 	})
 end
-
+-- akinsho/bufferline.nvim -- A snazzy 💅 buffer line (with tabpage integration) for Neovim built using lua. -- A snazzy 💅 buffer line (with tabpage integration) for Neovim built using lua.
 function config.nvim_bufferline()
 	local icons = { ui = require("modules.ui.icons").get("ui") }
 
@@ -858,7 +858,7 @@ function config.nvim_bufferline()
 
 	require("bufferline").setup(opts)
 end
-
+-- lewis6991/gitsigns.nvim -- Super fast git decorations implemented purely in lua/teal.-- 纯lua/teal实现的超级快的git装饰。
 function config.gitsigns()
 	require("gitsigns").setup({
 		signs = {
@@ -927,7 +927,7 @@ function config.gitsigns()
 		diff_opts = { internal = true },
 	})
 end
-
+-- lukas-reineke/indent-blankline.nvim -- This plugin adds indentation guides to all lines (including empty lines). -- 这个插件为所有行(包括空行)添加缩进指导。 
 function config.indent_blankline()
 	require("indent_blankline").setup({
 		char = "│",
@@ -975,11 +975,11 @@ function config.indent_blankline()
 		space_char_blankline = " ",
 	})
 end
-
+-- dstein64/nvim-scrollview -- nvim-scrollview is a Neovim plugin that displays interactive vertical scrollbars. -- nvm -scrollview是一个Neovim插件，可以显示交互式垂直滚动条。
 function config.scrollview()
 	require("scrollview").setup({})
 end
-
+-- j-hui/fidget.nvim -- Standalone UI for nvim-lsp progress.  Eye candy for the impatient. -- nvm -lsp进程的独立界面。对不耐烦的人来说是花瓶。
 function config.fidget()
 	require("fidget").setup({
 		window = { blend = 0 },
