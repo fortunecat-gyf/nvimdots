@@ -13,6 +13,12 @@ lang["simrat39/rust-tools.nvim"] = {
   dependencies = { "nvim-lua/plenary.nvim" },
 }
 -- Markdown 预览
+lang["Saecki/crates.nvim"] = {
+  lazy = true,
+  event = "BufReadPost Cargo.toml",
+  config = require("lang.crates"),
+  dependencies = { "nvim-lua/plenary.nvim" },
+}
 lang["iamcco/markdown-preview.nvim"] = {
   lazy = true,
   ft = "markdown",
