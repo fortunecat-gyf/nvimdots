@@ -63,7 +63,7 @@ local function load_options()
 		ruler = true,
 		cursorline = true,
 		cursorcolumn = true,
-		list = true,
+		list = false, -- true
 		showtabline = 2,
 		winwidth = 30,
 		winminwidth = 10,
