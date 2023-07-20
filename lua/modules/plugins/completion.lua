@@ -2,17 +2,22 @@ local completion = {}
 
 completion["neovim/nvim-lspconfig"] = {
 	lazy = true,
-	event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	event = { "CursorHold", "CursorHoldI" },
 	config = require("completion.lsp"),
 	dependencies = {
-		{ "ray-x/lsp_signature.nvim" },
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
 		{
-			"nvimdev/lspsaga.nvim",
-			config = require("completion.lspsaga"),
+			"ray-x/lsp_signature.nvim",
+			config = require("completion.lsp-signature"),
 		},
 	},
+}
+completion["nvimdev/lspsaga.nvim"] = {
+	lazy = true,
+	event = "LspAttach",
+	config = require("completion.lspsaga"),
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
 	lazy = true,
