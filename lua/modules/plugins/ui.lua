@@ -7,7 +7,7 @@ ui["goolord/alpha-nvim"] = {
 }
 ui["akinsho/bufferline.nvim"] = {
 	lazy = true,
-	event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	event = { "BufReadPre", "BufAdd", "BufNewFile" },
 	config = require("ui.bufferline"),
 }
 ui["Jint-lzxy/nvim"] = {
@@ -51,6 +51,11 @@ ui["folke/paint.nvim"] = {
 	event = { "CursorHold", "CursorHoldI" },
 	config = require("ui.paint"),
 }
+ui["mrjones2014/smart-splits.nvim"] = {
+	lazy = true,
+	event = { "CursorHoldI", "CursorHold" },
+	config = require("ui.splits"),
+}
 ui["folke/todo-comments.nvim"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
@@ -61,6 +66,10 @@ ui["dstein64/nvim-scrollview"] = {
 	lazy = true,
 	event = { "BufReadPost", "BufAdd", "BufNewFile" },
 	config = require("ui.scrollview"),
+}
+ui["folke/edgy.nvim"] = {
+	event = "VeryLazy",
+	config = require("ui.edgy"),
 }
 
 return ui
